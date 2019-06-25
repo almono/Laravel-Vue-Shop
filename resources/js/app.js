@@ -3,6 +3,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
+import {i18n} from './plugins/i18n'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -31,5 +32,6 @@ const app = new Vue({
     components: { App },
     router,
     store,
+    i18n,
     render: h => h(App)
 });
