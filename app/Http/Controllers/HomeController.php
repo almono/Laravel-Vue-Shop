@@ -8,13 +8,18 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Website;
+use App\Product;
 
 class HomeController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function test() {
-        $test = Website::first();
-        return $test;
+    public function getWelcomeMessage() {
+        $website = Website::pluck('welcome_msg')->first();
+        return $website;
+    }
+    public function getHomepageProducts() {
+        $products = Product::take(4)->get();
+        return $products;
     }
 }

@@ -11,7 +11,9 @@
 |
 */
 
-Route::post('/test', 'HomeController@test');
+Route::post('/getWelcomeMessage', 'HomeController@getWelcomeMessage');
+Route::post('/homepageProducts', 'HomeController@getHomepageProducts');
+
 Route::get('{any}', function () {
     return view('welcome');
 })->where('any','.*');
