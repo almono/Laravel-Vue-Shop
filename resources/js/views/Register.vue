@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <b-card border-variant="dark" header="Login Form" header-border-variant="dark" align="center" class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3" style="padding: 0px;">
+        <b-card border-variant="dark" header="Registration Form" header-border-variant="dark" align="center" class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3" style="padding: 0px;">
             <b-card-text>
-                <form @submit.prevent="login">
+                <form @submit.prevent="register">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" v-model="username" name="username" class="form-control" :class="{ 'is-invalid': submitted && !username }" required />
@@ -25,7 +25,7 @@
 
 <script>
     export default {
-        name: 'login',
+        name: 'register',
         data () {
             return {
                 username: '',
@@ -35,7 +35,7 @@
             }
         },
         methods: {
-            login (e) {
+            register (e) {
                 console.log(e)
             }
         }

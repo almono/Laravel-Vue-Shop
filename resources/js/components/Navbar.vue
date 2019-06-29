@@ -7,23 +7,28 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
+                        <b-nav-item-dropdown>
+                            <template slot="button-content">Categories</template>
+                            <b-dropdown-item href="#">Electronics</b-dropdown-item>
+                            <b-dropdown-item href="#">Clothes</b-dropdown-item>
+                            <b-dropdown-item href="#">Food</b-dropdown-item>
+                        </b-nav-item-dropdown>
                     </b-navbar-nav>
 
                     <b-navbar-nav class="ml-auto">
-                        <b-nav-item-dropdown text="Lang" right>
+                        <b-nav-item-dropdown text="Language" right>
                             <b-dropdown-item href="#">EN</b-dropdown-item>
-                            <b-dropdown-item href="#">ES</b-dropdown-item>
-                            <b-dropdown-item href="#">RU</b-dropdown-item>
-                            <b-dropdown-item href="#">FA</b-dropdown-item>
+                            <b-dropdown-item href="#">PL</b-dropdown-item>
                         </b-nav-item-dropdown>
 
                         <b-nav-item-dropdown right v-if="isUserLoggedIn">
-                            <template slot="button-content"><em>User</em></template>
+                            <template slot="button-content">User</template>
                             <b-dropdown-item href="#">Profile</b-dropdown-item>
                             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-navbar-nav v-else>
-                            <b-link :to="{ name: 'home' }" router-tag="b-nav-item">Login</b-link>
+                            <b-link :to="{ name: 'login' }" router-tag="b-nav-item">Login</b-link>
+                            <b-link :to="{ name: 'register' }" router-tag="b-nav-item">Register</b-link>
                         </b-navbar-nav>
                     </b-navbar-nav>
                 </b-collapse>
