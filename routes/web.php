@@ -14,6 +14,12 @@
 Route::post('/getWelcomeMessage', 'HomeController@getWelcomeMessage');
 Route::post('/homepageProducts', 'HomeController@getHomepageProducts');
 
+Route::post('/login', 'UserController@login');
+Route::post('/register', 'UserController@register');
+
+Route::post('/product/{id}', 'ProductController@viewProduct');
+Route::post('/product_list/{category}', 'ProductsController@getProductListByCategory');
+
 Route::get('{any}', function () {
     return view('welcome');
 })->where('any','.*');

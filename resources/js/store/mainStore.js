@@ -22,7 +22,7 @@ const actions = {
         })
     },
 
-    async getProducts(context) {
+    async getHomeProducts(context) {
         await axios.post(`${backendUrl()}/homepageProducts`).then(response => {
             context.commit('setHomepageProducts', response.data)
         }).catch(err => {

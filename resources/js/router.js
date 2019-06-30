@@ -8,6 +8,7 @@ import ProductsList from './views/ProductsList.vue';
 import NotFound from './views/404Error.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register';
+import Product from './views/Product';
 
 
 let router = new Router({
@@ -26,6 +27,11 @@ let router = new Router({
             component: ProductsList
         },
         {
+            path: '/vuetest/public/product/:id',
+            name: 'product',
+            component: Product
+        },
+        {
             path: `/vuetest/public/login`,
             name: 'login',
             component: Login
@@ -34,6 +40,11 @@ let router = new Router({
             path: `/vuetest/public/register`,
             name: 'register',
             component: Register
+        },
+        {
+            path: '/vuetest/public/404',
+            name: 'error404',
+            component: NotFound
         },
         {
             path: '*',

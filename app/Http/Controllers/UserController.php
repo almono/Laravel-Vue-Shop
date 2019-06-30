@@ -10,16 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Website;
 use App\Product;
 
-class HomeController extends BaseController
+class UserController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getWelcomeMessage() {
-        $website = Website::pluck('welcome_msg')->first();
-        return $website;
+    public function login() {
+
     }
-    public function getHomepageProducts() {
-        $products = Product::take(4)->where('active',1)->get();
-        return $products;
+
+    public function register() {
+
     }
 }

@@ -9,13 +9,17 @@
                         <div v-show="submitted && !username" class="invalid-feedback">Username is required</div>
                     </div>
                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" v-model="email" name="email" class="form-control" :class="{ 'is-invalid': submitted && !email }" required />
+                        <div v-show="submitted && !email" class="invalid-feedback">Email is required</div>
+                    </div>
+                    <div class="form-group">
                         <label htmlFor="password">Password</label>
                         <input type="password" v-model="password" name="password" class="form-control" :class="{ 'is-invalid': submitted && !password }" required />
                         <div v-show="submitted && !password" class="invalid-feedback">Password is required</div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" :disabled="loggingIn">Login</button>
-                        <router-link :to="{ name: 'register' }" class="btn btn-link">Register</router-link>
+                        <button class="btn btn-primary" :disabled="loggingIn">Register</button>
                     </div>
                 </form>
             </b-card-text>
@@ -29,6 +33,7 @@
         data () {
             return {
                 username: '',
+                email: '',
                 password: '',
                 submitted: false,
                 loggingIn: false

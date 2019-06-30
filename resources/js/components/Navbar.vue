@@ -2,7 +2,7 @@
     <div style="margin-bottom: 20px;">
         <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
             <div class="container">
-                <b-link :to="{ name: 'home' }" router-tag="b-navbar-brand">Vue Shopping</b-link>
+                <b-link :to="{ name: 'home' }" router-tag="b-navbar-brand" class="hover-cursor">Vue Shopping</b-link>
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
                 <b-collapse id="nav-collapse" is-nav>
@@ -47,3 +47,9 @@
         }
     }
 </script>
+
+<style>
+    .hover-cursor {
+        cursor: pointer !important;
+    }
+</style>

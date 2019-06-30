@@ -4,12 +4,17 @@
             <hr class="my-4">
             <b-btn variant="primary" href="https://bootstrap-vue.js.org/">Products</b-btn>
         </b-jumbotron>
+
         <b-card-group deck >
-            <b-card v-for="product in getHomepageProducts" :key="product.id" v-bind:title="product.name" img-src="https://www.t-systems.com/image/756224/large1x1/fc/200/200/c5da96a98d100550569846a93c4756c2/vB/im-mc-bg-smart-sd-wan-png.jpg" img-alt="Image" img-top>
-                <b-card-text>
-                    {{ product.description }}
-                </b-card-text>
-                <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
+            <b-card v-for="product in getHomepageProducts" :key="product.id">
+                <b-link :to="{ name: 'product', params: { id: product.id} }" >
+                    <h3>{{ product.name }}</h3>
+                    <img src="product_images/product1.png" class="home-product-image">
+                    <b-card-text>
+                        {{ product.description }}
+                    </b-card-text>
+                    <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
+                </b-link>
             </b-card>
         </b-card-group>
     </div>
@@ -24,16 +29,32 @@
             loadWelcomeMessage() {
                 this.$store.dispatch('getWelcomeMessage')
             },
-            getProducts() {
-                this.$store.dispatch('getProducts')
+            getHomeProducts() {
+                this.$store.dispatch('getHomeProducts')
+            },
+            getImgSrc(productId) {
+               // return require('public/product_images/' + productId + '.png')
             }
         },
         created() {
             this.loadWelcomeMessage()
-            this.getProducts()
+            this.getHomeProducts()
         },
         computed: {
             ...mapGetters(['getHomepageProducts','getWelcomeMessage'])
         }
     }
 </script>
+
+<style scoped>
+    a {
+        color: black !important;
+    }
+    a:hover {
+        text-decoration: none !important;
+    }
+    .home-product-image {
+        max-height: 100%;
+        max-width: 100%;
+    }
+</style>
