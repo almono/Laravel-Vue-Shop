@@ -14,6 +14,10 @@ class HomeController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function index() {
+        return view('app');
+    }
+
     public function getWelcomeMessage() {
         $website = Website::pluck('welcome_msg')->first();
         return $website;

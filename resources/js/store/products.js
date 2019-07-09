@@ -11,13 +11,9 @@ const getters = {
 };
 
 const actions = {
-    async getProductInformation(context, productId) {
-        await axios.post(`${backendUrl()}/product/` + productId ).then(response => {
-            if (response.status == '200') {
-                context.commit('setProductDetails', response.data)
-            } else {
-                router.push({ name: 'error404'});
-            }
+    getProductInformation(context, productId) {
+        axios.post(`${backendUrl()}/product/` + productId,).then(response => {
+            context.commit('setProductDetails', response.data)
         }).catch(err => {
             console.log(err)
         })

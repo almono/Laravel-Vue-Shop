@@ -1,15 +1,12 @@
 <template>
     <div class="container">
-        <b-jumbotron header="Vue Shopping" :lead="getWelcomeMessage">
-            <hr class="my-4">
-            <b-btn variant="primary" href="https://bootstrap-vue.js.org/">Products</b-btn>
-        </b-jumbotron>
+        <b-jumbotron header="Vue Shopping" :lead="getWelcomeMessage"></b-jumbotron>
 
-        <b-card-group deck >
+        <b-card-group deck v-if="getHomepageProducts">
             <b-card v-for="product in getHomepageProducts" :key="product.id">
                 <b-link :to="{ name: 'product', params: { id: product.id} }" >
                     <h3>{{ product.name }}</h3>
-                    <img src="product_images/product1.png" class="home-product-image">
+                    <img src="public/product_images/product1.png" class="home-product-image">
                     <b-card-text>
                         {{ product.description }}
                     </b-card-text>
@@ -21,7 +18,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapState } from 'vuex'
 
     export default {
         name: 'home',
@@ -31,17 +28,21 @@
             },
             getHomeProducts() {
                 this.$store.dispatch('getHomeProducts')
-            },
-            getImgSrc(productId) {
-               // return require('public/product_images/' + productId + '.png')
             }
         },
         created() {
-            this.loadWelcomeMessage()
-            this.getHomeProducts()
+            if(!this.$store.state.mainStore.welcomeMessage) {
+                this.loadWelcomeMessage();
+            }
+            if(Object.entries(this.$store.state.mainStore.homepageProducts).length === 0) {
+                this.getHomeProducts()
+            }
         },
         computed: {
-            ...mapGetters(['getHomepageProducts','getWelcomeMessage'])
+            ...mapGetters(['getHomepageProducts','getWelcomeMessage']),
+            getImgSrc() {
+                return 'public/product_images/product1.png'
+            }
         }
     }
 </script>

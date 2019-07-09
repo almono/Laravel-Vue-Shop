@@ -20,6 +20,6 @@ Route::post('/register', 'UserController@register');
 Route::post('/product/{id}', 'ProductController@viewProduct');
 Route::post('/product_list/{category}', 'ProductsController@getProductListByCategory');
 
-Route::get('{any}', function () {
-    return view('welcome');
-})->where('any','.*');
+Route::post('/addToCart', 'ProductController@addToCart');
+
+Route::get('/{any}', 'HomeController@index')->where('any','.*');

@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store.js'
 
 Vue.use(Router);
 
 import Home from './views/Home.vue';
 import ProductsList from './views/ProductsList.vue';
 import NotFound from './views/404Error.vue';
-import Login from './views/Login.vue';
-import Register from './views/Register';
+import Auth from './views/Auth.vue';
 import Product from './views/Product';
-
 
 let router = new Router({
     mode: 'history',
-    base: process.env.BASE_URL,
+    base: '/',
+    history: true,
     fallback: true,
     routes: [
         {
@@ -32,14 +32,9 @@ let router = new Router({
             component: Product
         },
         {
-            path: `/vuetest/public/login`,
-            name: 'login',
-            component: Login
-        },
-        {
-            path: `/vuetest/public/register`,
-            name: 'register',
-            component: Register
+            path: `/vuetest/public/auth`,
+            name: 'auth',
+            component: Auth
         },
         {
             path: '/vuetest/public/404',

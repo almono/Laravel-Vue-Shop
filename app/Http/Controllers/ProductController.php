@@ -14,7 +14,17 @@ class ProductController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function viewProduct($id) {
-        $product = Product::find($id);
+        $product = Product::with('category','ratings.user')->find($id);
+        $all_ratings = $product->ratings->sum('rating');
+        if($all_ratings > 0)
+        {
+            $average_rating = floor($all_ratings / $product->ratings->count() );
+        } else {
+            $average_rating = 0;
+        }
+
+
+        $product->average_rating = $average_rating;
 
         if ($product && $product->active == 1) {
             return response($product, 200);
@@ -27,7 +37,18 @@ class ProductController extends BaseController
 
     }
 
-    public function addToCart() {
-
+    public function addToCart($productId = null, $quantity = null) {
+        jsonOutput('hi im json');
+        /*
+        $product = Product::where('active','1')->find($productId);
+        if($product) {
+            if($product->stock > $quantity) {
+                // add it
+            } else {
+                return response('You tried to add too many of this product', 204);
+            }
+        } else {
+            return response('Could not find this product', 204);
+        } */
     }
 }

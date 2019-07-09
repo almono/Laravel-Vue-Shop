@@ -10,8 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Website;
 use App\Product;
 
-class UserController extends BaseController
+class AuthController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function login() {
+
+    }
+
+    public function register() {
+
+    }
 }

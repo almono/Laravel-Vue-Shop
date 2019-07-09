@@ -20,15 +20,16 @@
                             <b-dropdown-item href="#">EN</b-dropdown-item>
                             <b-dropdown-item href="#">PL</b-dropdown-item>
                         </b-nav-item-dropdown>
-
                         <b-nav-item-dropdown right v-if="isUserLoggedIn">
                             <template slot="button-content">User</template>
                             <b-dropdown-item href="#">Profile</b-dropdown-item>
                             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-navbar-nav v-else>
-                            <b-link :to="{ name: 'login' }" router-tag="b-nav-item">Login</b-link>
-                            <b-link :to="{ name: 'register' }" router-tag="b-nav-item">Register</b-link>
+                            <b-link :to="{ name: 'auth' }" router-tag="b-nav-item">Login/Register</b-link>
+                        </b-navbar-nav>
+                        <b-navbar-nav>
+                            <b-nav-item>Cart <v-icon name="shopping-cart" scale="1.5" spin/></b-nav-item>
                         </b-navbar-nav>
                     </b-navbar-nav>
                 </b-collapse>
@@ -42,6 +43,11 @@
 
     export default {
         name: 'Navbar',
+        data() {
+            return {
+                cart: {}
+            }
+        },
         computed: {
             ...mapGetters(['isUserLoggedIn'])
         }
