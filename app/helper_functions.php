@@ -18,7 +18,7 @@ function jsonOutput($message ='test', $data = [], $key = '')
 // for error response
 function jsonOutputError($message, $data = [], $key = '')
 {
-    $statusCode = 200;
+    $statusCode = 404;
     $final_output = [];
     $final_output['status'] = 'error';
     $final_output['message'] = $message;

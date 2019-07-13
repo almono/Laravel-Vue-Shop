@@ -22,7 +22,7 @@
                                 <b-input-group-prepend>
                                     <b-btn variant="outline-secondary btn-minus text-center" v-on:click="substractQuantity()">-</b-btn>
                                 </b-input-group-prepend>
-                                <b-form-input class="quantity-box text-center" type="number" min="0" v-model="quantity"></b-form-input>
+                                <b-form-input class="quantity-box text-center" type="number" min="1" v-model="quantity"></b-form-input>
                                 <b-input-group-append>
                                     <b-btn variant="outline-secondary btn-plus text-center" v-on:click="addQuantity()">+</b-btn>
                                 </b-input-group-append>
@@ -67,7 +67,7 @@
         name: 'Product',
         data() {
             return {
-                quantity: 0,
+                quantity: 1,
                 product: {}
             }
         },
@@ -90,13 +90,12 @@
                 }
             },
             substractQuantity() {
-                if(this.quantity > 0) {
+                if(this.quantity > 1) {
                     this.quantity -= 1;
                 }
             },
             addProductToCart() {
-                console.log('test')
-                this.$store.dispatch('addProductToCart')
+                this.$store.dispatch('addProductToCart', { productId: this.product.id, quantity: this.quantity })
             }
         },
         computed: {
@@ -130,7 +129,7 @@
         padding: 10px;
     }
     .product-quantity {
-        max-width: 130px;
+        max-width: 160px;
     }
     .product-right-btns {
         position: absolute;
@@ -162,7 +161,7 @@
         font-weight: 700;
     }
     .product-add-cart {
-        width: 130px;
+        width: 160px;
         border-radius: 0px;
         margin-top: 5px;
     }

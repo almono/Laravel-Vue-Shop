@@ -29,7 +29,7 @@
                             <b-link :to="{ name: 'auth' }" router-tag="b-nav-item">Login/Register</b-link>
                         </b-navbar-nav>
                         <b-navbar-nav>
-                            <b-nav-item>Cart <v-icon name="shopping-cart" scale="1.5" spin/></b-nav-item>
+                            <b-nav-item style="position: relative;">Cart <v-icon name="shopping-cart" scale="1.5" /><b-badge class="cart-quantity" variant="success">{{ getCartProductQuantities }}</b-badge></b-nav-item>
                         </b-navbar-nav>
                     </b-navbar-nav>
                 </b-collapse>
@@ -49,7 +49,7 @@
             }
         },
         computed: {
-            ...mapGetters(['isUserLoggedIn'])
+            ...mapGetters(['isUserLoggedIn','getCartProductQuantities'])
         }
     }
 </script>
@@ -57,5 +57,12 @@
 <style>
     .hover-cursor {
         cursor: pointer !important;
+    }
+    .cart-quantity {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-size: 12px;
+        border-radius: 50%;
     }
 </style>

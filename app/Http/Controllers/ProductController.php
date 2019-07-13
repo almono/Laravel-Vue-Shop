@@ -7,6 +7,8 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+use Illuminate\Http\Request;
+
 use App\Product;
 
 class ProductController extends BaseController
@@ -37,18 +39,18 @@ class ProductController extends BaseController
 
     }
 
-    public function addToCart($productId = null, $quantity = null) {
-        jsonOutput('hi im json');
-        /*
-        $product = Product::where('active','1')->find($productId);
+    public function addToCart(Request $request) {
+        $params = $request->all();
+        $product = Product::where('active','1')->find($params['productId']);
         if($product) {
-            if($product->stock > $quantity) {
+            if($product->stock > 1) {
                 // add it
+                jsonOutput('Product added to cart', ['productId' => $product->id, 'quantity' => $params['quantity']], 'productAddedToCart');
             } else {
                 return response('You tried to add too many of this product', 204);
             }
         } else {
             return response('Could not find this product', 204);
-        } */
+        }
     }
 }
