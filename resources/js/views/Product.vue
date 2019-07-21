@@ -95,7 +95,9 @@
                 }
             },
             addProductToCart() {
-                this.$store.dispatch('addProductToCart', { productId: this.product.id, quantity: this.quantity })
+                this.$store.dispatch('addProductToCart',
+                    { productId: this.product.id, quantity: this.quantity, productName: this.product.name, productPrice: this.product.price }
+                    )
             }
         },
         computed: {

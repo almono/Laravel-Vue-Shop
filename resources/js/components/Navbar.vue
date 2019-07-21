@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: 20px; padding-right: 0px; padding-left: 0px;">
         <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
             <div class="container">
                 <b-link :to="{ name: 'home' }" router-tag="b-navbar-brand" class="hover-cursor">Vue Shopping</b-link>
@@ -28,8 +28,23 @@
                         <b-navbar-nav v-else>
                             <b-link :to="{ name: 'auth' }" router-tag="b-nav-item">Login/Register</b-link>
                         </b-navbar-nav>
-                        <b-navbar-nav>
-                            <b-nav-item style="position: relative;">Cart <v-icon name="shopping-cart" scale="1.5" /><b-badge class="cart-quantity" variant="success">{{ getCartProductQuantities }}</b-badge></b-nav-item>
+                        <b-nav-item-dropdown right class="cart-dropdown" v-if="getCart.length > 0">
+                            <template slot="button-content">Cart <v-icon name="shopping-cart" scale="1.5" /><b-badge class="cart-quantity" variant="success">{{ getCartProductQuantities }}</b-badge></template>
+                            <b-dropdown-item v-for="product in getCart" :key="product.id" class="cart-dropdown-div bt-1 bb-1 text-left">
+                                <div class="col-12 padding-fix">
+                                    <img :src="'../product_images/product1.png'" class="img-responsive" style="max-width: 50px; max-height: 50px;">
+                                    <b>{{ product.name }} ({{ product.quantity}})</b>
+                                </div>
+                                <div class="col-12 padding-fix text-right" style="margin-top: -15px; margin-bottom: 5px;">
+                                    {{ parseFloat(product.price * product.quantity).toFixed(2) }}$
+                                </div>
+                            </b-dropdown-item>
+                            <b-dropdown-item class="checkout-div text-center">
+                                <b-link :to="{ name: 'cart' }" router-tag="b-nav-item" class="btn btn-success btn-checkout">Checkout</b-link>
+                            </b-dropdown-item>
+                        </b-nav-item-dropdown>
+                        <b-navbar-nav v-else>
+                            <b-link :to="{ name: 'cart' }" router-tag="b-nav-item" style="position: relative;">Cart <v-icon name="shopping-cart" scale="1.5" /><b-badge class="cart-quantity" variant="success">{{ getCartProductQuantities }}</b-badge></b-link>
                         </b-navbar-nav>
                     </b-navbar-nav>
                 </b-collapse>
@@ -49,7 +64,7 @@
             }
         },
         computed: {
-            ...mapGetters(['isUserLoggedIn','getCartProductQuantities'])
+            ...mapGetters(['isUserLoggedIn', 'getCart', 'getCartProductQuantities'])
         }
     }
 </script>
@@ -62,7 +77,30 @@
         position: absolute;
         right: 0;
         bottom: 0;
-        font-size: 12px;
+        font-size: 11px;
         border-radius: 50%;
+    }
+    .cart-dropdown > .dropdown-toggle::after {
+        display:none;
+    }
+    .cart-dropdown > ul {
+        padding: 0px;
+    }
+    .cart-dropdown-div > a {
+        padding: 5px 15px 5px 10px;
+    }
+    .btn-checkout {
+        padding: 5px 10px 5px 10px;
+        width: 100%;
+    }
+    .btn-checkout > a {
+        padding: 0px !important;
+        color: white !important;
+    }
+    .checkout-div {
+        padding: 5px 0px;
+    }
+    .checkout-div > a:active, .checkout-div > a:focus {
+        background-color: transparent;
     }
 </style>

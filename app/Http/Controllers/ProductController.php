@@ -44,8 +44,9 @@ class ProductController extends BaseController
         $product = Product::where('active','1')->find($params['productId']);
         if($product) {
             if($product->stock > 1) {
-                // add it
-                jsonOutput('Product added to cart', ['productId' => $product->id, 'quantity' => $params['quantity']], 'productAddedToCart');
+                jsonOutput('Product added to cart',
+                    ['productId' => $product->id, 'quantity' => $params['quantity'], 'productName' => $params['productName'], 'productPrice' => $params['productPrice']],
+                    'productAddedToCart');
             } else {
                 return response('You tried to add too many of this product', 204);
             }

@@ -9,6 +9,7 @@ import ProductsList from './views/ProductsList.vue';
 import NotFound from './views/404Error.vue';
 import Auth from './views/Auth.vue';
 import Product from './views/Product';
+import Cart from './views/Cart'
 
 let router = new Router({
     mode: 'history',
@@ -30,6 +31,11 @@ let router = new Router({
             path: '/vuetest/public/product/:id',
             name: 'product',
             component: Product
+        },
+        {
+            path: '/vuetest/public/cart',
+            name: 'cart',
+            component: Cart
         },
         {
             path: `/vuetest/public/auth`,
