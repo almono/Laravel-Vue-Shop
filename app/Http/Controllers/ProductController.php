@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 use App\Product;
+use App\Category;
 
 class ProductController extends BaseController
 {
@@ -35,8 +36,15 @@ class ProductController extends BaseController
         }
     }
 
-    public function getProductListByCategory() {
+    public function getProductListByCategory($category) {
+        if(isset($category) && !is_null($category)) {
+            $categoryId = Category::getCategoryByName($category);
+            $products = Product::getProductListByCategory($categoryId);
+        } else {
+            $products = Product::all()->paginate(20);
+        }
 
+        return $products;
     }
 
     public function addToCart(Request $request) {

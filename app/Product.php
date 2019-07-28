@@ -16,4 +16,11 @@ class Product extends Model
         return $this->hasMany('App\ProductRatings');
     }
 
+    public static function getProductListByCategory($category) {
+        return self::where([
+            ['category_id', $category],
+            ['active', 1]
+        ])->get();
+    }
+
 }

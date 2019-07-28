@@ -3,11 +3,13 @@ import { backendUrl } from '../helpers/backendUrl.js'
 import router from '../router'
 
 const state = {
-    product: {}
+    product: {},
+    productList: {}
 };
 
 const getters = {
-    getProductDetails: (state) => state.product
+    getProductDetails: (state) => state.product,
+    getProductList: (state) => state.productList
 };
 
 const actions = {
@@ -17,11 +19,20 @@ const actions = {
         }).catch(err => {
             console.log(err)
         })
+    },
+    getProductList(context, category) {
+        axios.get(`${backendUrl()}/product_list/${category}`).then(response => {
+            console.log(response.data)
+            context.commit('setProductList', response.data)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 };
 
 const mutations = {
-    setProductDetails: (state, productDetails) => (state.product = productDetails)
+    setProductDetails: (state, productDetails) => (state.product = productDetails),
+    setProductList: (state, productList) => (state.productList = productList)
 };
 
 export default {

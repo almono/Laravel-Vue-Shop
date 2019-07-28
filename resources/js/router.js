@@ -23,7 +23,7 @@ let router = new Router({
             component: Home
         },
         {
-            path: `/vuetest/public/products`,
+            path: `/vuetest/public/products/:category?`,
             name: 'products_list',
             component: ProductsList
         },
