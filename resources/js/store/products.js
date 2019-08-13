@@ -22,7 +22,6 @@ const actions = {
     },
     getProductList(context, category) {
         axios.get(`${backendUrl()}/product_list/${category}`).then(response => {
-            console.log(response.data)
             context.commit('setProductList', response.data)
         }).catch(err => {
             console.log(err)

@@ -1,16 +1,15 @@
 <template>
     <div class="col-12 auth-div text-center">
-        <div class="auth-div-right">
-            <div class="col-12 register-header">
-                <h2>Register</h2>
+        <div class="auth-div-left">
+            <div class="col-12 login-header">
+                <h2>Login</h2>
             </div>
-            <div class="col-12 register-form-div">
-                <input type="text" v-model="register_username" placeholder="Username" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="register_email" placeholder="E-mail" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="register_password" placeholder="Password" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="register_pass_conf" placeholder="Confirm password" class="form-control auth-form-input col-4" required />
+            <div class="col-12 login-form-div text-center">
+                <input type="text" v-model="login_username" placeholder="Username" class="form-control auth-form-input col-4" required />
+                <input type="text" v-model="login_password" placeholder="Password" class="form-control auth-form-input col-4" required />
 
-                <button class="btn btn-primary auth-form-btn col-4">Register</button>
+                <button class="btn btn-primary auth-form-btn col-4">Login</button>
+                <span class="col-12 login-forgot-password">Forgot password?</span>
             </div>
         </div>
     </div>
@@ -18,20 +17,13 @@
 
 <script>
     export default {
-        name: 'register',
+        name: 'Login',
         data () {
             return {
-                register_username: '',
-                register_email: '',
-                register_password: '',
-                register_pass_conf: ''
+                login_password: '',
+                login_username: ''
             }
         },
-        methods: {
-            register (e) {
-                console.log(e)
-            }
-        }
     }
 </script>
 

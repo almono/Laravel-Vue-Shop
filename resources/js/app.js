@@ -7,8 +7,6 @@ import {i18n} from './plugins/i18n'
 import StarRating from 'vue-star-rating'
 import Icon from 'vue-awesome/components/Icon'
 
-
-// import 'vuetify/dist/vuetify.min.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-awesome/icons'
@@ -18,19 +16,7 @@ import App from './views/App.vue'
 
 Vue.use(BootstrapVue);
 Vue.component('star-rating', StarRating);
-Vue.component('v-icon', Icon)
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('v-icon', Icon);
 
 
 const app = new Vue({

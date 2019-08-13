@@ -1,4 +1,4 @@
  export function backendUrl() {
-    let url = '/vuetest/public'
+    let url = '/vuetest'
     return url
  }

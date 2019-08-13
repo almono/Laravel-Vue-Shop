@@ -1,16 +1,14 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="card filters-card">
+        <div class="col-12 justify-content-center">
+            <div class="col-12 padding-fix card filters-card" style="margin-bottom: 15px;">
                 <div class="card-body">
                     <ProductFilters></ProductFilters>
                 </div>
             </div>
-            <div class="card filters-card">
-                <div class="card-body">
-                    <div v-for="prod in getProductList">
-                        <ProductListCard :prod="prod"></ProductListCard>
-                    </div>
+            <div class="col-12 padding-fix products-div">
+                <div class="prod-list-div col-lg-3" style="display: inline-block;" v-for="prod in getProductList">
+                    <ProductListCard :prod="prod"></ProductListCard>
                 </div>
             </div>
         </div>
@@ -45,5 +43,8 @@
 <style scoped>
     .filters-card {
         width: 100%;
+    }
+    .prod-list-div {
+        height: 300px;
     }
 </style>

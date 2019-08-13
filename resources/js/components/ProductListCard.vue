@@ -1,17 +1,19 @@
 <template>
-    <div>
-        <b-card-group deck>
-            <b-card>
-                <b-link :to="{ name: 'product', params: { id: prod.id} }" >
-                    <h3>{{ prod.name }}</h3>
-                    <img src="public/product_images/product1.png" class="home-product-image">
-                    <b-card-text>
-                        {{ prod.description }}
-                    </b-card-text>
-                    <div slot="footer"><small class="text-muted">Last updated 3 mins ago</small></div>
-                </b-link>
-            </b-card>
-        </b-card-group>
+    <div class="prod-mini-prod">
+        <b-card>
+            <b-link :to="{ name: 'product', params: { id: prod.id} }" :title="prod.description" >
+
+                <div class="prod-mini-img text-center">
+                    <img :src="'../product_images/product1.png'" class="img-responsive">
+                </div>
+                <div class="prod-mini-title text-center">
+                    <h5>{{ prod.name }}</h5>
+                </div>
+                <div class="prod-mini-footer text-center">
+                    <h5 class="prod-mini-price">{{ prod.price }}$</h5>
+                </div>
+            </b-link>
+        </b-card>
     </div>
 </template>
 
@@ -25,3 +27,40 @@
         }
     }
 </script>
+
+<style scoped>
+    .prod-mini-prod {
+        height: 100%;
+    }
+    .prod-mini-prod > .card {
+        height: 100%;
+        max-height: 200px;
+    }
+    .prod-mini-title {
+        height: 50px;
+    }
+    .prod-mini-title {
+        margin-bottom: 0px;
+    }
+    .prod-mini-img {
+        height: 100px;
+        max-width: 100%;
+    }
+    .prod-mini-footer {
+        height: 50px;
+    }
+    .prod-mini-price {
+        color: #b50000;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    a {
+        color: black !important;
+    }
+    a:hover {
+        text-decoration: none !important;
+    }
+    .card-body {
+        padding: 5px;
+    }
+</style>

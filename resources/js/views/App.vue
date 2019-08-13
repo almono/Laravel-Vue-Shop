@@ -56,4 +56,9 @@ import Footer from '../components/Footer.vue'
     .fade-leave-active {
         opacity: 0
     }
+
+    .img-responsive {
+        max-width: 100%;
+        max-height: 100%;
+    }
 </style>

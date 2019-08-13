@@ -22,9 +22,10 @@ const actions = {
         })
     },
 
-    async getHomeProducts(context) {
-        await axios.post(`${backendUrl()}/homepageProducts`).then(response => {
+    getHomeProducts(context) {
+        axios.post(`${backendUrl()}/homepageProducts`).then(response => {
             context.commit('setHomepageProducts', response.data)
+            console.log(context.state.homepageProducts)
         }).catch(err => {
             console.log(err)
         })
