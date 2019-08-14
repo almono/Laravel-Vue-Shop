@@ -9,6 +9,7 @@ import ProductsList from './views/ProductsList.vue';
 import NotFound from './views/404Error.vue';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
+import Auth from './views/Auth.vue';
 import Product from './views/Product';
 import Cart from './views/Cart'
 
@@ -47,6 +48,11 @@ let router = new Router({
             path: `/vuetest/register`,
             name: 'register',
             component: Register
+        },
+        {
+            path: '/vuetest/auth',
+            name: 'auth',
+            component: Auth
         },
         {
             path: '/vuetest/404',

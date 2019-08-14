@@ -31,8 +31,13 @@
                             <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-nav-item-dropdown v-else class="text-center" text="My account" right>
-                            <b-link :to="{ name: 'login' }" router-tag="b-dropdown-item">Login</b-link>
-                            <b-link :to="{ name: 'register' }" router-tag="b-dropdown-item">Register</b-link>
+                            <b-link :to="{ name: 'auth' }" router-tag="b-dropdown-item">My account</b-link>
+                            <b-dropdown-divider></b-dropdown-divider>
+                            <div v-if="!isUserLoggedIn">
+                                <b-link :to="{ name: 'login' }" router-tag="b-dropdown-item">Login</b-link>
+                                <b-link :to="{ name: 'register' }" router-tag="b-dropdown-item">Register</b-link>
+                            </div>
+                            <b-link v-else :to="{ name: 'login' }" router-tag="b-dropdown-item">Logout</b-link>
                         </b-nav-item-dropdown>
                         <b-nav-item-dropdown right class="cart-dropdown" v-if="getCart.length > 0">
                             <template slot="button-content">Cart <v-icon name="shopping-cart" scale="1.5" /><b-badge class="cart-quantity" variant="success">{{ getCartProductQuantities }}</b-badge></template>

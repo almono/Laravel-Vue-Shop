@@ -5,10 +5,10 @@
                 <h2>Login</h2>
             </div>
             <div class="col-12 login-form-div text-center">
-                <input type="text" v-model="login_username" placeholder="Username" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="login_password" placeholder="Password" class="form-control auth-form-input col-4" required />
+                <input type="text" v-model="login_username" placeholder="Username" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
+                <input type="text" v-model="login_password" placeholder="Password" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
 
-                <button class="btn btn-primary auth-form-btn col-4">Login</button>
+                <button class="btn btn-primary auth-form-btn col-12 col-md-4 col-lg-2">Login</button>
                 <span class="col-12 login-forgot-password">Forgot password?</span>
             </div>
         </div>
@@ -53,15 +53,10 @@
         box-shadow: none;
     }
     .auth-form-btn {
-        margin-top: 25px;
+        margin-top: 35px;
     }
     .login-forgot-password {
         display: block;
         font-size: 14px;
-    }
-    .auth-div-left, .auth-div-right {
-        position: relative;
-        top: 50%;
-        transform: perspective(1px) translateY(-50%);
     }
 </style>

@@ -5,12 +5,13 @@
                 <h2>Register</h2>
             </div>
             <div class="col-12 register-form-div">
-                <input type="text" v-model="register_username" placeholder="Username" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="register_email" placeholder="E-mail" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="register_password" placeholder="Password" class="form-control auth-form-input col-4" required />
-                <input type="text" v-model="register_pass_conf" placeholder="Confirm password" class="form-control auth-form-input col-4" required />
+                <input type="text" v-model="register_username" placeholder="Username" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
+                <input type="text" v-model="register_email" placeholder="E-mail" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
+                <input type="text" v-model="register_password" placeholder="Password" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
+                <input type="text" v-model="register_pass_conf" placeholder="Confirm password" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
 
-                <button class="btn btn-primary auth-form-btn col-4">Register</button>
+                <button class="btn btn-primary auth-form-btn col-12 col-md-4 col-lg-2">Register</button>
+                <span class="col-12 register-got-account">Already got an account?</span>
             </div>
         </div>
     </div>
@@ -63,13 +64,8 @@
     .auth-form-btn {
         margin-top: 25px;
     }
-    .login-forgot-password {
+    .register-got-account {
         display: block;
         font-size: 14px;
-    }
-    .auth-div-left, .auth-div-right {
-        position: relative;
-        top: 50%;
-        transform: perspective(1px) translateY(-50%);
     }
 </style>

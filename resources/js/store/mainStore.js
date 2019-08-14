@@ -2,13 +2,11 @@ import axios from 'axios'
 import { backendUrl } from '../helpers/backendUrl.js'
 
 const state = {
-    loggedIn: false,
     welcomeMessage: '',
     homepageProducts: {}
 };
 
 const getters = {
-    isUserLoggedIn: (state) => state.loggedIn,
     getWelcomeMessage: (state) => state.welcomeMessage,
     getHomepageProducts: (state) => state.homepageProducts
 };
@@ -33,7 +31,6 @@ const actions = {
 };
 
 const mutations = {
-    setLoggedIn: (state, status) => ( state.loggedIn = status ),
     setWelcomeMessage: (state, welcomeMessage) => ( state.welcomeMessage = welcomeMessage ),
     setHomepageProducts: (state, homepageProducts) => ( state.homepageProducts = homepageProducts )
 };
