@@ -10,6 +10,14 @@ const getters = {
 };
 
 const actions = {
+    async registerUser(context, data) {
+        console.log(data)
+        await axios.post(`${backendUrl()}/registerUser`, data).then(response => {
+            //console.log(response.data)
+        }).catch(err => {
+            //console.log(err)
+        })
+    }
 };
 
 const mutations = {

@@ -50,7 +50,7 @@
                 </b-card-text>
             </b-card> -->
 
-            <div class="col-6 auth-div text-center padding-fix">
+            <div class="col-6 auth-div text-center padding-fix" style="border-right: 1px solid rgba(132, 132, 132, 0.51);">
                 <div class="auth-div-left">
                     <div class="col-12 login-header">
                         <h2>Login</h2>
@@ -64,18 +64,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 auth-div text-center padding-fix">
+            <div class="col-6 auth-div text-center padding-fix" style="border-right: 1px solid rgba(132, 132, 132, 0.51);">
                 <div class="auth-div-right">
                     <div class="col-12 register-header">
                         <h2>Register</h2>
                     </div>
                     <div class="col-12 register-form-div">
-                        <input type="text" v-model="register_username" placeholder="Username" class="form-control auth-form-input col-6" required />
-                        <input type="text" v-model="register_email" placeholder="E-mail" class="form-control auth-form-input col-6" required />
-                        <input type="text" v-model="register_password" placeholder="Password" class="form-control auth-form-input col-6" required />
-                        <input type="text" v-model="register_pass_conf" placeholder="Confirm password" class="form-control auth-form-input col-6" required />
+                        <b-form v-on:submit.prevent="register">
+                            <input type="text" v-model="register_username" placeholder="Username" class="form-control auth-form-input col-6" required />
+                            <input type="text" v-model="register_email" placeholder="E-mail" class="form-control auth-form-input col-6" required />
+                            <input type="text" v-model="register_password" placeholder="Password" class="form-control auth-form-input col-6" required />
+                            <input type="text" v-model="register_pass_conf" placeholder="Confirm password" class="form-control auth-form-input col-6" required />
 
-                        <button class="btn btn-primary auth-form-btn col-6">Register</button>
+                            <button class="btn btn-primary auth-form-btn col-6">Register</button>
+                        </b-form>
                     </div>
                 </div>
             </div>
@@ -100,11 +102,16 @@
             }
         },
         methods: {
-            login (e) {
-                console.log(e)
+            login() {
+
             },
-            register (e) {
-                console.log(e)
+            register() {
+                this.$store.dispatch('registerUser', {
+                    username: this.register_username,
+                    email: this.register_email,
+                    password: this.register_password,
+                    password_confirmation: this.register_pass_conf
+                })
             }
         }
     }
@@ -156,12 +163,6 @@
     .login-forgot-password {
         display: block;
         font-size: 14px;
-    }
-    .auth-div-left {
-        border-right: 1px solid rgba(132,132,132,0.5);
-    }
-    .auth-div-right {
-        border-left: 1px solid rgba(132,132,132,0.5);
     }
     .auth-div-left, .auth-div-right {
         position: relative;
