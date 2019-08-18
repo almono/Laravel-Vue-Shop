@@ -3,12 +3,14 @@ import { backendUrl } from '../helpers/backendUrl.js'
 
 const state = {
     welcomeMessage: '',
-    homepageProducts: {}
+    homepageProducts: {},
+    response: {}
 };
 
 const getters = {
     getWelcomeMessage: (state) => state.welcomeMessage,
-    getHomepageProducts: (state) => state.homepageProducts
+    getHomepageProducts: (state) => state.homepageProducts,
+    getResponse: (state) => state.response
 };
 
 const actions = {
@@ -27,12 +29,32 @@ const actions = {
         }).catch(err => {
             console.log(err)
         })
-    }
+    },
+
+    handleResponse(context, response) {
+        /* if(response.data.httpCode == 503){
+            router.push('/404')
+        } else if(response.data.httpCode == 401) {
+            vuecookie.remove('token')
+            context.commit('setLoggedIn', false)
+            router.push('/')
+        } */
+        context.commit('showResponse', response.data)
+        context.commit('hideResponse')
+    },
 };
 
 const mutations = {
     setWelcomeMessage: (state, welcomeMessage) => ( state.welcomeMessage = welcomeMessage ),
-    setHomepageProducts: (state, homepageProducts) => ( state.homepageProducts = homepageProducts )
+    setHomepageProducts: (state, homepageProducts) => ( state.homepageProducts = homepageProducts ),
+    showResponse: (state, info) => (state.response = info),
+    hideResponse: () => (
+        setTimeout( function(){
+            if(state.response) {
+                state.response = 0
+            }
+        }, 3000000)
+    )
 };
 
 export default {

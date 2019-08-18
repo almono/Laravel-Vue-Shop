@@ -1,6 +1,7 @@
 <template>
     <div id="content">
         <Navbar></Navbar>
+        <ResponseInfo></ResponseInfo>
         <transition name="fade" mode="out-in">
             <router-view></router-view>
         </transition>
@@ -11,12 +12,14 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
+import ResponseInfo from '../components/ResponseInfo.vue'
 
     export default {
         name: 'App',
         components: {
             Navbar,
-            Footer
+            Footer,
+            ResponseInfo
         }
     }
 </script>

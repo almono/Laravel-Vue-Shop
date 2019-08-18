@@ -29,3 +29,19 @@ function jsonOutputError($message, $data = [], $key = '')
     echo json_encode($final_output);
     exit();
 }
+
+function prepareResult($status = 'success', $message = 'missing message', $data = [], $info = NULL )
+{
+    $result['status'] = $status;
+    $result['message'] = $message;
+
+    if(!empty($data)) {
+        $result['data'] = $data;
+    };
+
+    if(!is_null($info)) {
+        $result['info'] = $info;
+    };
+
+    return $result;
+}

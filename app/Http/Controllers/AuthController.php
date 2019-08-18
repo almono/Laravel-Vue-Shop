@@ -38,16 +38,15 @@ class AuthController extends BaseController
             try {
                 $new_user->save();
             } catch (\Exception $e) {
-                $result['exception'] = $e->getMessage();
+                $result = prepareResult('Error', 'There has been an error', [], $e->getMessage());
+                return response($result, 400);
             }
 
-            $result['status'] = 'Success';
-            $result['message'] = 'User registered successfully';
-
+            $result = prepareResult('Success', 'User registered successfully!');
             return response($result,200);
+
         } else {
-            $result['status'] = 'error';
-            $result['errors'] = $validator->errors();
+            $result = prepareResult('Error', 'Validation failed', [], $validator->errors());
             return response($result, 400);
         }
 

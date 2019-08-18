@@ -6,16 +6,16 @@ const state = {
 };
 
 const getters = {
-    isUserLoggedIn: (state) => state.loggedIn,
+    isUserLoggedIn: (state) => state.loggedIn
 };
 
 const actions = {
     async registerUser(context, data) {
         console.log(data)
         await axios.post(`${backendUrl()}/registerUser`, data).then(response => {
-            //console.log(response.data)
+            context.dispatch('handleResponse', response)
         }).catch(err => {
-            //console.log(err)
+            context.dispatch('handleResponse', err.response)
         })
     }
 };
