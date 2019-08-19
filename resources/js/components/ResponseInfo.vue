@@ -1,9 +1,10 @@
 <template>
     <div>
-
-        <div v-if="getResponse.message" v-bind:class="{'success-response' : (getResponse.status == 'Success'), 'error-response' : (getResponse.status == 'Error')}" class="response-popup">
-            <p v-bind:class="{'form-success' : (getResponse.status == 'Success'), 'form-error' : (getResponse.status == 'Error')}">{{ getResponse.message }}</p>
-        </div>
+        <transition name="fade">
+            <div v-if="getResponse.message" v-bind:class="{'success-response' : (getResponse.status == 'Success'), 'error-response' : (getResponse.status == 'Error')}" class="response-popup">
+                <p v-bind:class="{'form-success' : (getResponse.status == 'Success'), 'form-error' : (getResponse.status == 'Error')}">{{ getResponse.message }}</p>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -46,5 +47,11 @@
     .error-response {
         border: 3px solid #bd4444;
         background-color: indianred;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 </style>

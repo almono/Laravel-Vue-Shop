@@ -53,7 +53,7 @@ const mutations = {
             if(state.response) {
                 state.response = 0
             }
-        }, 3000000)
+        }, 3000)
     )
 };
 
