@@ -19,7 +19,8 @@ Route::post('/registerUser', 'AuthController@register');
 
 Route::post('/product/{id}', 'ProductController@viewProduct');
 Route::get('/product_list/{category}', 'ProductController@getProductListByCategory');
-
 Route::post('/addToCart', 'ProductController@addToCart');
+
+Route::get('/getLangData/{language}', 'LanguageController@getLanguageTranslations');
 
 Route::get('/{any}', 'HomeController@index')->where('any','.*');

@@ -4,6 +4,7 @@ import mainStore from './store/mainStore'
 import cart from './store/cart'
 import products from './store/products'
 import auth from './store/auth'
+import languages from './store/languages'
 
 Vue.use(Vuex);
 
@@ -12,7 +13,8 @@ let store = new Vuex.Store({
         mainStore,
         cart,
         products,
-        auth
+        auth,
+        languages
     },
     state: {
         contentLoading: false
