@@ -14,6 +14,6 @@ class LanguageController extends BaseController
 
     public function getLanguageTranslations($language = 'EN') {
         $langId = Language::getLanguageIdByCode($language);
-        dd($langId);
+        return $langId;
     }
 }

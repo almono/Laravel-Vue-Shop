@@ -13,19 +13,17 @@ const getters = {
 const actions = {
     async getLangData(context, language) {
         await axios.get(`${backendUrl()}/getLangData/${language}`).then(response => {
-            console.log(response)
-            let curr_lang = localStorage.getItem('vueCurrentLang') || 'EN';
+            /*let curr_lang = localStorage.getItem('vueCurrentLang') || 'EN';
 
             if(curr_lang != 'EN' && response.data[curr_lang] != undefined) {
                 i18n.setLocaleMessage(curr_lang,response.data[curr_lang])
             }
 
             i18n.setLocaleMessage('EN',response.data.EN);
-            i18n.locale = curr_lang
+            i18n.locale = curr_lang */
+        }).catch(err => {
+            console.log(err)
         })
-            .catch(err => {
-                console.log(err)
-            })
     },
 
     async getTranslatedWords(context, language) {

@@ -11,7 +11,6 @@ const getters = {
 
 const actions = {
     async registerUser(context, data) {
-        console.log(data)
         await axios.post(`${backendUrl()}/registerUser`, data).then(response => {
             context.dispatch('handleResponse', response)
         }).catch(err => {

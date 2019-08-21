@@ -11,7 +11,8 @@ import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Auth from './views/Auth.vue';
 import Product from './views/Product';
-import Cart from './views/Cart'
+import Cart from './views/Cart';
+import MyAccount from './views/MyAccount';
 
 let router = new Router({
     mode: 'history',
@@ -40,19 +41,22 @@ let router = new Router({
             component: Cart
         },
         {
-            path: `/vuetest/login`,
+            path: '/vuetest/login',
             name: 'login',
             component: Login
-        },
-        {
-            path: `/vuetest/register`,
-            name: 'register',
-            component: Register
         },
         {
             path: '/vuetest/auth',
             name: 'auth',
             component: Auth
+        },
+        {
+            path: '/vuetest/my_account',
+            name: 'my_account',
+            component: MyAccount,
+            meta: {
+                requireLogin: true
+            }
         },
         {
             path: '/vuetest/404',
@@ -65,6 +69,21 @@ let router = new Router({
             component: NotFound
         }
     ]
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requireLogin)) {
+        //console.log(store.getters.isUserLoggedIn)
+        if (!store.getters.isUserLoggedIn) {
+            next({
+                path: '/vuetest/login'
+            })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
 });
 
 export default router
