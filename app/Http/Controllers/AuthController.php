@@ -15,8 +15,17 @@ class AuthController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function login() {
+    public function login(Request $request) {
+        $params = $request->all();
+        $user = User::getUserByUsername($params['username']);
 
+        if(!is_null($user)) {
+            $result = prepareResult('Error', 'Invalid login details');
+            return response($result, 400);
+        } else {
+            $result = prepareResult('Error', 'Invalid login details');
+            return response($result, 400);
+        }
     }
 
     public function register(Request $request) {

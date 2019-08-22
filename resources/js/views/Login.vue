@@ -5,11 +5,13 @@
                 <h2>Login</h2>
             </div>
             <div class="col-12 login-form-div text-center">
-                <input type="text" v-model="login_username" placeholder="Username" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
-                <input type="text" v-model="login_password" placeholder="Password" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
+                <b-form v-on:submit.prevent="login">
+                    <input type="text" v-model="username" placeholder="Username" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
+                    <input type="text" v-model="password" placeholder="Password" class="form-control auth-form-input col-12 col-md-4 col-lg-2" required />
 
-                <button class="btn btn-primary auth-form-btn col-12 col-md-4 col-lg-2">Login</button>
-                <span class="col-12 login-forgot-password">Forgot password?</span>
+                    <button class="btn btn-primary auth-form-btn col-12 col-md-4 col-lg-2">Login</button>
+                    <span class="col-12 login-forgot-password">Forgot password?</span>
+                </b-form>
             </div>
         </div>
     </div>
@@ -20,10 +22,18 @@
         name: 'Login',
         data () {
             return {
-                login_password: '',
-                login_username: ''
+                username: '',
+                password: ''
             }
         },
+        methods: {
+            login() {
+                this.$store.dispatch('login', {
+                    username: this.username,
+                    password: this.password
+                })
+            }
+        }
     }
 </script>
 

@@ -14,7 +14,7 @@
 Route::post('/getWelcomeMessage', 'HomeController@getWelcomeMessage');
 Route::post('/homepageProducts', 'HomeController@getHomepageProducts');
 
-Route::post('/login', 'UserController@login');
+Route::post('/login', 'AuthController@login');
 Route::post('/registerUser', 'AuthController@register');
 
 Route::post('/product/{id}', 'ProductController@viewProduct');
