@@ -7,19 +7,12 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
-                        <!--<b-nav-item-dropdown>
-                            <template slot="button-content">Categories</template>
-                            <b-dropdown-item href="#">Electronics</b-dropdown-item>
-                            <b-dropdown-item href="#">Clothes</b-dropdown-item>
-                            <b-dropdown-item href="#">Food</b-dropdown-item>
-                        </b-nav-item-dropdown> -->
                         <b-nav-item-dropdown text="Categories">
                             <b-link :to="{ name: 'products_list', params: { category: 'electronics'} }" router-tag="b-dropdown-item">Electronics</b-link>
                             <b-link :to="{ name: 'products_list', params: { category: 'clothes'} }" router-tag="b-dropdown-item">Clothes</b-link>
                             <b-link :to="{ name: 'products_list', params: { category: 'food'} }" router-tag="b-dropdown-item">Food</b-link>
                         </b-nav-item-dropdown>
                     </b-navbar-nav>
-
                     <b-navbar-nav class="ml-auto">
                         <b-nav-item-dropdown text="Language" right>
                             <b-dropdown-item href="#">EN</b-dropdown-item>

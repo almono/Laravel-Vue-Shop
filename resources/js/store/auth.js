@@ -13,6 +13,8 @@ const actions = {
     login(context, data) {
         axios.post(`${backendUrl()}/login`, data).then(response => {
             context.dispatch('handleResponse', response)
+            context.commit('setLoggedIn', true)
+            router.push({ name: 'home' })
         }).catch(err => {
             context.dispatch('handleResponse', err.response)
         })
@@ -24,6 +26,11 @@ const actions = {
         }).catch(err => {
             context.dispatch('handleResponse', err.response)
         })
+    },
+
+    logout(context) {
+        context.commit('setLoggedIn', false)
+        router.push({ name: 'home' })
     }
 };
 

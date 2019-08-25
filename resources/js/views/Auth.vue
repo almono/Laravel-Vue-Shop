@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-6 auth-div text-center padding-fix" style="border-right: 1px solid rgba(132, 132, 132, 0.51);">
+            <div class="col-6 auth-div text-center padding-fix">
                 <div class="auth-div-left">
                     <div class="col-12 login-header">
                         <h2>Login</h2>
@@ -98,6 +98,8 @@
         margin-top: 10px;
         height: 400px;
         max-height: 400px;
+        border-right: 1px solid rgba(132, 132, 132, 0.51);
+        border-left: 1px solid rgba(132, 132, 132, 0.51);
     }
     .auth-form-input {
         border: none;

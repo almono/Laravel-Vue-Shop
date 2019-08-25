@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
 
@@ -19,13 +20,13 @@ class AuthController extends BaseController
         $params = $request->all();
         $user = User::getUserByUsername($params['username']);
 
-        if(!is_null($user)) {
-            $result = prepareResult('Error', 'Invalid login details');
-            return response($result, 400);
-        } else {
-            $result = prepareResult('Error', 'Invalid login details');
-            return response($result, 400);
+        if(!is_null($user) && Hash::check($params['password'], $user->password)) {
+            $result = prepareResult('Success', 'Logged in', $user);
+            return response($result, 200);
         }
+
+        $result = prepareResult('Error', 'Invalid login details');
+        return response($result, 400);
     }
 
     public function register(Request $request) {

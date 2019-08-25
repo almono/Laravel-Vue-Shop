@@ -81,6 +81,10 @@ router.beforeEach((to, from, next) => {
         } else {
             next()
         }
+    } else if(to.matched.some(record => !record.name == 'auth') || to.matched.some(record => !record.name == 'login') && store.getters.isUserLoggedIn) {
+        next({
+            path: '/vuetest/'
+        })
     } else {
         next()
     }

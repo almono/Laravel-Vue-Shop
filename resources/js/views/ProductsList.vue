@@ -36,6 +36,11 @@
         },
         created() {
             this.loadProductList(this.$route.params.category)
+        },
+        watch: {
+            "$route.params.category" (category) {
+                this.loadProductList(this.$route.params.category)
+            }
         }
     }
 </script>
