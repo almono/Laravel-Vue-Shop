@@ -4,7 +4,7 @@
             <b-link :to="{ name: 'product', params: { id: prod.id} }" :title="prod.description" >
 
                 <div class="prod-mini-img text-center">
-                    <img :src="'../product_images/product1.png'" class="img-responsive">
+                    <img src="/vuetest/public/product_images/product1.png" class="img-responsive">
                 </div>
                 <div class="col-12 prod-mini-title text-center">
                     <h5>{{ prod.name }}</h5>

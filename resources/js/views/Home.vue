@@ -1,10 +1,20 @@
 <template>
     <div class="container">
-        <b-jumbotron header="Vue Shopping" :lead="getWelcomeMessage"></b-jumbotron>
+        <div class="home-carousel">
+            <b-carousel id="carousel-fade" style="text-shadow: 0px 0px 2px #000;" fade indicators >
+                <b-carousel-slide class="text-center">
+                    <p>Electronics</p><br>
+                    <router-link :to="{ name: 'products_list', params: { category: 'electronics'} }">
+                        <button class="btn btn-primary">Explore</button>
+                    </router-link>
+                    <img slot="img" class="img-carousel" height="360" src="/vuetest/public/images/category1.jpg" alt="image slot">
+                </b-carousel-slide>
+            </b-carousel>
+        </div>
 
-        <b-card-group deck v-if="getHomepageProducts">
-            <HomeProduct v-for="product in getHomepageProducts" :key="product.id" :product="product"></HomeProduct>
-        </b-card-group>
+        <div v-if="getHomepageProducts">
+            <HomeProduct v-for="prod in getHomepageProducts" :key="prod.id" :prod="prod"></HomeProduct>
+        </div>
     </div>
 </template>
 
@@ -39,6 +49,26 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    .home-carousel {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .img-carousel {
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .carousel-caption {
+        top: 0 !important;
+        bottom: auto !important;
+        width: 100%;
+        left: 0 !important;
+        right: 0 !important;
+        text-align: left !important;
+        font-size: 60px;
+        font-weight: 600;
+        padding: 20px;
+    }
 </style>

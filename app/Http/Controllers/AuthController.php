@@ -21,7 +21,7 @@ class AuthController extends BaseController
         $user = User::getUserByUsername($params['username']);
 
         if(!is_null($user) && Hash::check($params['password'], $user->password)) {
-            $result = prepareResult('Success', 'Logged in', $user);
+            $result = prepareResult('Success', 'Successfully logged in', $user);
             return response($result, 200);
         }
 

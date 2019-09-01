@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 import { backendUrl } from '../helpers/backendUrl.js'
 
 const state = {
@@ -10,11 +11,11 @@ const getters = {
 };
 
 const actions = {
-    login(context, data) {
-        axios.post(`${backendUrl()}/login`, data).then(response => {
+    async login(context, data) {
+        await axios.post(`${backendUrl()}/login`, data).then(response => {
             context.dispatch('handleResponse', response)
             context.commit('setLoggedIn', true)
-            router.push({ name: 'home' })
+            router.push({ name: 'home'})
         }).catch(err => {
             context.dispatch('handleResponse', err.response)
         })
